@@ -1,11 +1,13 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
 <title>Tabula Rasa — The Front Page</title>
+
 <style>
+
 * {
 margin: 0;
 padding: 0;
@@ -13,13 +15,14 @@ box-sizing: border-box;
 }
 
 body {
-background: #faf7f2; /* warm paper-like background */
+background: #faf7f2;
 font-family: 'Georgia', 'Times New Roman', Times, serif;
 color: #1e2a2e;
 line-height: 1.4;
 }
 
-/* main grid container: left sidebar (scrollable) + main content */
+/* MAIN LAYOUT */
+
 .magazine-container {
 display: flex;
 flex-direction: row;
@@ -30,10 +33,11 @@ background: #ffffff;
 box-shadow: 0 0 30px rgba(0, 0, 0, 0.03);
 }
 
-/* ========= SCROLLABLE LEFT SIDEBAR (PREVIOUS ISSUES) ========= */
+/* SIDEBAR */
+
 .issues-sidebar {
 flex: 0 0 280px;
-background: #2c3e2f; /* deep magazine green / forest */
+background: #2c3e2f;
 color: #ede7dc;
 display: flex;
 flex-direction: column;
@@ -61,7 +65,8 @@ opacity: 0.75;
 font-style: italic;
 }
 
-/* scrollable list of previous issues */
+/* ISSUE LIST */
+
 .issues-list {
 flex: 1;
 overflow-y: auto;
@@ -84,8 +89,15 @@ background: #c7b28b;
 border-radius: 8px;
 }
 
+.issue-group {
+width: 100%;
+}
+
+/* CATEGORY BUTTONS */
+
 .issue-link {
 display: block;
+width: 100%;
 padding: 0.85rem 1.5rem;
 color: #f0ede5;
 text-decoration: none;
@@ -95,6 +107,11 @@ transition: all 0.2s ease;
 font-size: 0.95rem;
 font-weight: 450;
 border-bottom: 1px solid rgba(255, 245, 215, 0.08);
+background: none;
+border-top: none;
+border-right: none;
+cursor: pointer;
+text-align: left;
 }
 
 .issue-link:hover {
@@ -114,14 +131,45 @@ margin-top: 4px;
 font-family: monospace;
 }
 
-/* active / dummy indicator for demo (current issue highlighted style) */
-.issue-link.current-demo {
-background: #4b6850;
-border-left-color: #e9d6a7;
-font-weight: 500;
+/* ARTICLE BUBBLES */
+
+.article-bubbles {
+display: none;
+padding: 1rem;
+flex-wrap: wrap;
+gap: 0.8rem;
+background: #344838;
+border-bottom: 1px solid rgba(255,255,255,0.05);
+justify-content: center;
 }
 
-/* ========= MAIN CONTENT AREA (FRONT PAGE) ========= */
+.article-bubbles.active {
+display: flex;
+}
+
+.article-bubble {
+border: none;
+background: #f2e7d1;
+color: #2c3e2f;
+padding: 1rem 1.3rem;
+border-radius: 999px;
+font-family: 'Inter', sans-serif;
+font-size: 0.85rem;
+font-weight: 600;
+cursor: pointer;
+transition: all 0.2s ease;
+min-width: 130px;
+box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+}
+
+.article-bubble:hover {
+transform: translateY(-2px);
+background: #fff5e2;
+box-shadow: 0 8px 18px rgba(0,0,0,0.16);
+}
+
+/* MAIN CONTENT */
+
 .main-content {
 flex: 1;
 background: #ffffff;
@@ -129,7 +177,8 @@ display: flex;
 flex-direction: column;
 }
 
-/* magazine title area */
+/* HEADER */
+
 .magazine-header {
 padding: 2.5rem 3rem 1rem 3rem;
 border-bottom: 1px solid #eae3d4;
@@ -154,112 +203,9 @@ font-family: 'Inter', sans-serif;
 font-weight: 400;
 }
 
-/* FEATURED CURRENT ISSUE SECTION (photo + title + description) */
-.current-issue {
-padding: 2rem 3rem 3rem 3rem;
-}
+/* CURRENT ISSUE */
+/* FOOTER */
 
-.issue-badge {
-display: inline-block;
-font-family: 'Inter', sans-serif;
-font-size: 0.7rem;
-font-weight: 600;
-text-transform: uppercase;
-background: #2c3e2f;
-color: #f9efdf;
-padding: 0.2rem 1rem;
-border-radius: 30px;
-letter-spacing: 0.8px;
-margin-bottom: 1.2rem;
-}
-
-.feature-grid {
-display: flex;
-flex-wrap: wrap;
-gap: 2rem;
-align-items: flex-start;
-}
-
-.feature-image {
-flex: 1.2;
-min-width: 240px;
-}
-
-.feature-image img {
-width: 100%;
-height: auto;
-display: block;
-border-radius: 6px;
-box-shadow: 0 16px 28px -12px rgba(0, 0, 0, 0.2);
-transition: transform 0.2s ease;
-object-fit: cover;
-aspect-ratio: 4 / 3;
-background: #ece3d8;
-}
-
-.feature-image img:hover {
-transform: scale(1.01);
-}
-
-.feature-text {
-flex: 1;
-min-width: 240px;
-}
-
-.current-issue-title {
-font-size: 2.4rem;
-font-weight: 700;
-font-family: 'Playfair Display', serif;
-color: #1f2e23;
-line-height: 1.2;
-margin-bottom: 1rem;
-border-left: 5px solid #c2a15b;
-padding-left: 1rem;
-}
-
-.issue-description {
-font-size: 1.08rem;
-line-height: 1.55;
-color: #3b413c;
-margin-bottom: 1.8rem;
-font-family: 'Georgia', serif;
-}
-
-.meta-info {
-display: flex;
-gap: 1.8rem;
-flex-wrap: wrap;
-font-family: 'Inter', sans-serif;
-font-size: 0.8rem;
-color: #6a6f5e;
-border-top: 1px solid #ede3d2;
-padding-top: 1.2rem;
-margin-top: 0.5rem;
-}
-
-.read-more {
-background: none;
-border: 1.5px solid #2c3e2f;
-padding: 0.6rem 1.6rem;
-font-family: 'Inter', sans-serif;
-font-weight: 600;
-font-size: 0.8rem;
-text-transform: uppercase;
-letter-spacing: 1px;
-color: #2c3e2f;
-cursor: pointer;
-transition: 0.2s;
-background: #ffffff;
-border-radius: 40px;
-margin-top: 0.5rem;
-}
-
-.read-more:hover {
-background: #2c3e2f;
-color: #fef7e8;
-}
-
-/* small divider / extra story teaser (optional) */
 .preview-note {
 margin-top: 2rem;
 padding: 1rem 3rem 2rem 3rem;
@@ -282,153 +228,312 @@ font-family: monospace;
 border-top: 1px solid #e6dbc9;
 }
 
-/* responsive: on smaller screens, sidebar becomes full width top? we keep column layout but shrink sidebar */
+/* RESPONSIVE */
+
 @media (max-width: 780px) {
+
 .magazine-container {
 flex-direction: column;
 }
+
 .issues-sidebar {
 flex: auto;
-max-height: 280px;
+max-height: 350px;
 width: 100%;
 overflow-y: auto;
 }
+
 .magazine-header {
 padding: 1.5rem;
 }
+
 .current-issue {
 padding: 1.5rem;
 }
+
 .mag-name {
 font-size: 2.5rem;
 }
+
 .current-issue-title {
 font-size: 1.8rem;
 }
+
 }
+
 </style>
 </head>
+
 <body>
+
 <div class="magazine-container">
-<!-- LEFT SIDEBAR: SCROLLABLE PREVIOUS ISSUES LINKS -->
+
+<!-- SIDEBAR -->
+
 <aside class="issues-sidebar">
+
 <div class="sidebar-header">
 <h3>📚 ARCHIVE</h3>
 <p>previous editions — scroll to explore</p>
 </div>
+
 <div class="issues-list">
-<!-- simulated previous issues links (anchors point to #, demo placeholder) -->
-<a href="#" class="issue-link">
+
+<!-- SCIENCE -->
+<div class="issue-group">
+
+<button class="issue-link expandable">
 Science
 <span class="issue-date">Date</span>
-</a>
-<a href="#" class="issue-link">
+</button>
+
+<div class="article-bubbles">
+<button class="article-bubble">Article #1</button>
+<button class="article-bubble">Article #2</button>
+<button class="article-bubble">Article #3</button>
+</div>
+
+</div>
+
+<!-- LITERATURE -->
+<div class="issue-group">
+
+<button class="issue-link expandable">
 Literature
 <span class="issue-date">Date</span>
-</a>
-<a href="#" class="issue-link">
+</button>
+
+<div class="article-bubbles">
+<button class="article-bubble">Article #1</button>
+<button class="article-bubble">Article #2</button>
+<button class="article-bubble">Article #3</button>
+</div>
+
+</div>
+
+<!-- MATHEMATICS -->
+<div class="issue-group">
+
+<button class="issue-link expandable">
 Mathematics
 <span class="issue-date">Date</span>
-</a>
-<a href="#" class="issue-link">
+</button>
+
+<div class="article-bubbles">
+<button class="article-bubble">Article #1</button>
+<button class="article-bubble">Article #2</button>
+<button class="article-bubble">Article #3</button>
+</div>
+
+</div>
+
+<!-- ART -->
+<div class="issue-group">
+
+<button class="issue-link expandable">
 Art
 <span class="issue-date">Date</span>
-</a>
-<a href="#" class="issue-link">
+</button>
+
+<div class="article-bubbles">
+<button class="article-bubble">Article #1</button>
+<button class="article-bubble">Article #2</button>
+<button class="article-bubble">Article #3</button>
+</div>
+
+</div>
+
+<!-- PHILOSOPHER -->
+<div class="issue-group">
+
+<button class="issue-link expandable">
 Philosopher
 <span class="issue-date">Date</span>
-</a>
-<a href="#" class="issue-link">
+</button>
+
+<div class="article-bubbles">
+<button class="article-bubble">Article #1</button>
+<button class="article-bubble">Article #2</button>
+<button class="article-bubble">Article #3</button>
+</div>
+
+</div>
+
+<!-- SPECIAL -->
+<div class="issue-group">
+
+<button class="issue-link expandable">
 Special
 <span class="issue-date">Date</span>
-</a>
+</button>
+
+<div class="article-bubbles">
+<button class="article-bubble">Article #1</button>
+<button class="article-bubble">Article #2</button>
+<button class="article-bubble">Article #3</button>
 </div>
-<div class="sidebar-header" style="border-top: 1px solid rgba(255,255,245,0.1); margin-top: auto; border-bottom: none;">
-<p style="font-size: 0.7rem;">✨ complete archive since April 2026</p>
+
 </div>
+
+</div>
+
+<div class="sidebar-header"
+style="border-top: 1px solid rgba(255,255,245,0.1);
+margin-top: auto;
+border-bottom: none;">
+
+<p style="font-size: 0.7rem;">
+✨ complete archive since April 2026
+</p>
+
+</div>
+
 </aside>
 
-<!-- RIGHT SIDE: MAIN FRONT PAGE -->
+<!-- MAIN CONTENT -->
+
 <main class="main-content">
+
 <div class="magazine-header">
-<div class="mag-name">TABULA RASA MEDIA</div>
-<div class="mag-tagline">✦ THE JOURNAL OF SCIENCE AND HUMANITIES ✦</div>
+
+<div class="mag-name">
+TABULA RASA MEDIA
 </div>
 
-<!-- CURRENT ISSUE SECTION: photo, title, description -->
+<div class="mag-tagline">
+✦ THE JOURNAL OF SCIENCE AND HUMANITIES ✦
+</div>
+
+</div>
+
+<!-- CURRENT ISSUE -->
+
 <div class="current-issue">
-<div class="issue-badge">📖 CURRENT ISSUE — SPRING 2026</div>
+
+<div class="issue-badge">
+📖 CURRENT ISSUE — SPRING 2026
+</div>
+
 <div class="feature-grid">
+
 <div class="feature-image">
 
 <img
 src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=800&auto=format"
-alt="Current issue featured photograph: editorial style landscape"
+alt="Current issue featured photograph"
 loading="lazy"
-onerror="this.src='https://picsum.photos/id/104/800/600'; this.onerror=null;"
 >
+
 </div>
+
 <div class="feature-text">
-<h1 class="current-issue-title">title</h1>
+
+<h1 class="current-issue-title">
+The Beginning of a New Intellectual Era
+</h1>
+
 <div class="issue-description">
-In our Spring 2026 edition, we blah blah blah. First edition yada yada.
+In our Spring 2026 edition, we explore the evolving
+intersection of science, literature, mathematics,
+art, and philosophy in the modern world.
 </div>
+
 <div class="meta-info">
 <span>📅 Published: April 22, 2026</span>
 <span>📄 1 million pages</span>
 <span>🎨 Cover art: PLACEHOLDER</span>
 </div>
-<button class="read-more" aria-label="Read current issue">READ THE ISSUE →</button>
-</div>
-</div>
+
+<button class="read-more">
+READ THE ISSUE →
+</button>
+
 </div>
 
-<!-- small extra excerpt / magazine highlight (just to enrich the front page) -->
+</div>
+
+</div>
+
+<!-- EXTRA NOTE -->
+
 <div class="preview-note">
-<span>✨ INSIDE THIS ISSUE: PLHO • PLHO • PLHO</span>
-<span>🔖 DIGITAL ONLY </span>
+<span>✨ INSIDE THIS ISSUE: SCIENCE • ART • MATHEMATICS</span>
+<span>🔖 DIGITAL ONLY</span>
 </div>
+
 <footer>
-© 2026 Tabula Rasa Media — Independent monthly magazine. All rights reserved.
+© 2026 Tabula Rasa Media — Independent monthly magazine.
+All rights reserved.
 </footer>
+
 </main>
+
 </div>
 
-<!-- simple interaction: alert for demo when clicking previous issue links (just to show they lead somewhere; stays true to "links for previous issues") -->
+<!-- SCRIPT -->
+
 <script>
+
 (function() {
-// get all issue links (previous issues) and attach a small demo behavior
-// that shows which issue would open (non-intrusive, keeps html clean)
-const links = document.querySelectorAll('.issue-link');
-links.forEach(link => {
-link.addEventListener('click', function(e) {
-// prevent actual hash jump if href="#"
-if (this.getAttribute('href') === '#') {
-e.preventDefault();
-}
-// extract issue name text
-const issueText = this.childNodes[0]?.nodeValue?.trim() || this.innerText.split('\n')[0];
-const fullTitle = issueText || "previous issue";
-// show a subtle magazine-like alert/toast? Not too intrusive, just demo behavior
-// but better: small console message and gentle browser alert? For better UX, we use a non-blocking notification.
-// But since spec just said "links for previous issues", we make them functional in demo.
-// We'll create a toast-like message that fades, mimicking archive preview.
-showToast(`📖 Opening archive: ${fullTitle} (demo preview)`);
-});
+
+/* expandable sections */
+
+const expandableLinks =
+document.querySelectorAll('.expandable');
+
+expandableLinks.forEach(button => {
+
+button.addEventListener('click', function() {
+
+const bubbleSection =
+this.parentElement.querySelector('.article-bubbles');
+
+bubbleSection.classList.toggle('active');
+
 });
 
-// read more button also leads to demo alert (shows current issue)
-const readBtn = document.querySelector('.read-more');
-if (readBtn) {
-readBtn.addEventListener('click', () => {
-showToast(`✨ You are viewing the CURRENT ISSUE: "IDK`);
 });
+
+/* article buttons */
+
+const articleButtons =
+document.querySelectorAll('.article-bubble');
+
+articleButtons.forEach(button => {
+
+button.addEventListener('click', function(e) {
+
+e.stopPropagation();
+
+showToast(`📄 Opening ${this.innerText}`);
+
+});
+
+});
+
+/* current issue button */
+
+const readBtn =
+document.querySelector('.read-more');
+
+if (readBtn) {
+
+readBtn.addEventListener('click', () => {
+
+showToast(`✨ Opening CURRENT ISSUE`);
+
+});
+
 }
+
+/* toast notification */
 
 function showToast(msg) {
-// create simple toast notification that disappears
+
 let toast = document.createElement('div');
+
 toast.innerText = msg;
+
 toast.style.position = 'fixed';
 toast.style.bottom = '30px';
 toast.style.left = '50%';
@@ -442,17 +547,28 @@ toast.style.fontSize = '0.85rem';
 toast.style.fontWeight = '500';
 toast.style.zIndex = '9999';
 toast.style.boxShadow = '0 8px 20px rgba(0,0,0,0.2)';
-toast.style.backdropFilter = 'blur(2px)';
 toast.style.border = '1px solid #ddcca5';
-toast.style.letterSpacing = '0.3px';
+
 document.body.appendChild(toast);
+
 setTimeout(() => {
+
 toast.style.opacity = '0';
 toast.style.transition = 'opacity 0.4s';
-setTimeout(() => toast.remove(), 400);
+
+setTimeout(() => {
+
+toast.remove();
+
+}, 400);
+
 }, 2300);
+
 }
+
 })();
+
 </script>
+
 </body>
 </html>
