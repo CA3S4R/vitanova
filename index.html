@@ -2,261 +2,308 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Tabula Rasa — The Front Page</title>
 
 <style>
 
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-body {
-background: #faf7f2;
-font-family: 'Georgia', 'Times New Roman', Times, serif;
-color: #1e2a2e;
-line-height: 1.4;
+body{
+background:#faf7f2;
+font-family:'Georgia','Times New Roman',serif;
+color:#1e2a2e;
+line-height:1.4;
 }
 
-/* MAIN LAYOUT */
+/* ================= LAYOUT ================= */
 
-.magazine-container {
-display: flex;
-flex-direction: row;
-min-height: 100vh;
-max-width: 1400px;
-margin: 0 auto;
-background: #ffffff;
-box-shadow: 0 0 30px rgba(0, 0, 0, 0.03);
+.magazine-container{
+display:flex;
+min-height:100vh;
+max-width:1400px;
+margin:0 auto;
+background:#fff;
+box-shadow:0 0 30px rgba(0,0,0,0.03);
 }
 
-/* SIDEBAR */
+/* ================= SIDEBAR ================= */
 
-.issues-sidebar {
-flex: 0 0 280px;
-background: #2c3e2f;
-color: #ede7dc;
-display: flex;
-flex-direction: column;
-box-shadow: 2px 0 12px rgba(0, 0, 0, 0.05);
+.issues-sidebar{
+flex:0 0 280px;
+background:#2c3e2f;
+color:#ede7dc;
+display:flex;
+flex-direction:column;
+box-shadow:2px 0 12px rgba(0,0,0,0.05);
 }
 
-.sidebar-header {
-padding: 2rem 1.5rem 1rem 1.5rem;
-border-bottom: 1px solid rgba(255, 255, 245, 0.2);
+.sidebar-header{
+padding:2rem 1.5rem 1rem 1.5rem;
+border-bottom:1px solid rgba(255,255,245,0.2);
 }
 
-.sidebar-header h3 {
-font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-font-weight: 500;
-letter-spacing: 1px;
-font-size: 0.9rem;
-text-transform: uppercase;
-color: #dcd7c2;
-margin-bottom: 0.5rem;
+.sidebar-header h3{
+font-family:'Inter',sans-serif;
+font-size:0.9rem;
+font-weight:500;
+letter-spacing:1px;
+text-transform:uppercase;
+color:#dcd7c2;
+margin-bottom:0.5rem;
 }
 
-.sidebar-header p {
-font-size: 0.75rem;
-opacity: 0.75;
-font-style: italic;
+.sidebar-header p{
+font-size:0.75rem;
+opacity:0.75;
+font-style:italic;
 }
 
-/* ISSUE LIST */
+/* ================= ISSUE LINKS ================= */
 
-.issues-list {
-flex: 1;
-overflow-y: auto;
-padding: 1rem 0 2rem 0;
-scrollbar-width: thin;
-scrollbar-color: #c7b28b #3b4e3a;
+.issues-list{
+flex:1;
+overflow-y:auto;
+padding:1rem 0 2rem 0;
 }
 
-.issues-list::-webkit-scrollbar {
-width: 5px;
+.issue-link{
+display:block;
+width:100%;
+padding:0.9rem 1.5rem;
+background:none;
+border:none;
+text-align:left;
+cursor:pointer;
+color:#f0ede5;
+font-family:'Inter',sans-serif;
+font-size:0.95rem;
+font-weight:450;
+border-left:3px solid transparent;
+border-bottom:1px solid rgba(255,245,215,0.08);
+transition:all 0.2s ease;
 }
 
-.issues-list::-webkit-scrollbar-track {
-background: #3b4e3a;
-border-radius: 8px;
+.issue-link:hover{
+background:#3f5541;
+border-left-color:#e5c687;
+padding-left:1.8rem;
+color:#fff9ef;
 }
 
-.issues-list::-webkit-scrollbar-thumb {
-background: #c7b28b;
-border-radius: 8px;
+/* ================= MAIN CONTENT ================= */
+
+.main-content{
+flex:1;
+display:flex;
+flex-direction:column;
+background:#fff;
 }
 
-.issue-group {
-width: 100%;
+/* ================= HEADER ================= */
+
+.magazine-header{
+padding:2.5rem 3rem 1rem 3rem;
+border-bottom:1px solid #eae3d4;
 }
 
-/* CATEGORY BUTTONS */
-
-.issue-link {
-display: block;
-width: 100%;
-padding: 0.85rem 1.5rem;
-color: #f0ede5;
-text-decoration: none;
-font-family: 'Inter', system-ui, -apple-system, sans-serif;
-border-left: 3px solid transparent;
-transition: all 0.2s ease;
-font-size: 0.95rem;
-font-weight: 450;
-border-bottom: 1px solid rgba(255, 245, 215, 0.08);
-background: none;
-border-top: none;
-border-right: none;
-cursor: pointer;
-text-align: left;
+.mag-name{
+font-size:3.8rem;
+font-weight:700;
+font-family:'Playfair Display','Georgia',serif;
+color:#2c3e2f;
+line-height:1.1;
 }
 
-.issue-link:hover {
-background: #3f5541;
-border-left-color: #e5c687;
-color: #fff9ef;
-padding-left: 1.8rem;
+.mag-tagline{
+font-size:0.8rem;
+text-transform:uppercase;
+letter-spacing:3px;
+color:#a28b62;
+margin-top:0.6rem;
+font-family:'Inter',sans-serif;
 }
 
-.issue-date {
-display: block;
-font-size: 0.7rem;
-text-transform: uppercase;
-letter-spacing: 0.5px;
-color: #cfcaae;
-margin-top: 4px;
-font-family: monospace;
+/* ================= FRONT PAGE ================= */
+
+.current-issue{
+padding:2rem 3rem 3rem 3rem;
 }
 
-/* ARTICLE BUBBLES */
-
-.article-bubbles {
-display: none;
-padding: 1rem;
-flex-wrap: wrap;
-gap: 0.8rem;
-background: #344838;
-border-bottom: 1px solid rgba(255,255,255,0.05);
-justify-content: center;
+.issue-badge{
+display:inline-block;
+font-family:'Inter',sans-serif;
+font-size:0.7rem;
+font-weight:600;
+text-transform:uppercase;
+background:#2c3e2f;
+color:#f9efdf;
+padding:0.2rem 1rem;
+border-radius:30px;
+letter-spacing:0.8px;
+margin-bottom:1.2rem;
 }
 
-.article-bubbles.active {
-display: flex;
+.feature-grid{
+display:flex;
+flex-wrap:wrap;
+gap:2rem;
+align-items:flex-start;
 }
 
-.article-bubble {
-border: none;
-background: #f2e7d1;
-color: #2c3e2f;
-padding: 1rem 1.3rem;
-border-radius: 999px;
-font-family: 'Inter', sans-serif;
-font-size: 0.85rem;
-font-weight: 600;
-cursor: pointer;
-transition: all 0.2s ease;
-min-width: 130px;
-box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+.feature-image{
+flex:1.2;
+min-width:240px;
 }
 
-.article-bubble:hover {
-transform: translateY(-2px);
-background: #fff5e2;
-box-shadow: 0 8px 18px rgba(0,0,0,0.16);
+.feature-image img{
+width:100%;
+display:block;
+border-radius:6px;
+box-shadow:0 16px 28px -12px rgba(0,0,0,0.2);
+object-fit:cover;
+aspect-ratio:4/3;
+border-radius:40px;
+margin-top:0.5rem;
 }
 
-/* MAIN CONTENT */
-
-.main-content {
-flex: 1;
-background: #ffffff;
-display: flex;
-flex-direction: column;
+.read-more:hover{
+background:#2c3e2f;
+color:#fef7e8;
 }
 
-/* HEADER */
+/* ================= CATEGORY PAGE ================= */
 
-.magazine-header {
-padding: 2.5rem 3rem 1rem 3rem;
-border-bottom: 1px solid #eae3d4;
+.category-page{
+display:none;
+padding:3rem;
+animation:fadeIn 0.3s ease;
 }
 
-.mag-name {
-font-size: 3.8rem;
-font-weight: 700;
-letter-spacing: -0.02em;
-font-family: 'Playfair Display', 'Georgia', serif;
-color: #2c3e2f;
-line-height: 1.1;
+.category-page.active{
+display:block;
 }
 
-.mag-tagline {
-font-size: 0.8rem;
-text-transform: uppercase;
-letter-spacing: 3px;
-color: #a28b62;
-margin-top: 0.6rem;
-font-family: 'Inter', sans-serif;
-font-weight: 400;
+.category-title{
+font-size:2.5rem;
+font-family:'Playfair Display',serif;
+color:#2c3e2f;
+margin-bottom:0.8rem;
 }
 
-/* CURRENT ISSUE */
-/* FOOTER */
-
-.preview-note {
-margin-top: 2rem;
-padding: 1rem 3rem 2rem 3rem;
-border-top: 1px solid #f0e7db;
-font-style: italic;
-color: #6f6a5c;
-font-size: 0.85rem;
-display: flex;
-justify-content: space-between;
-flex-wrap: wrap;
+.category-subtitle{
+font-size:1rem;
+color:#6f6a5c;
+margin-bottom:2rem;
+font-style:italic;
 }
 
-footer {
-background: #faf5ea;
-text-align: center;
-padding: 1rem;
-font-size: 0.7rem;
-color: #7b725e;
-font-family: monospace;
-border-top: 1px solid #e6dbc9;
+.article-grid{
+display:flex;
+gap:1.5rem;
+flex-wrap:wrap;
 }
 
-/* RESPONSIVE */
-
-@media (max-width: 780px) {
-
-.magazine-container {
-flex-direction: column;
+.article-bubble{
+border:none;
+background:#f2e7d1;
+color:#2c3e2f;
+padding:1.4rem 2rem;
+border-radius:999px;
+font-family:'Inter',sans-serif;
+font-size:1rem;
+font-weight:600;
+cursor:pointer;
+transition:all 0.2s ease;
+min-width:180px;
+box-shadow:0 4px 10px rgba(0,0,0,0.12);
 }
 
-.issues-sidebar {
-flex: auto;
-max-height: 350px;
-width: 100%;
-overflow-y: auto;
+.article-bubble:hover{
+transform:translateY(-3px);
+background:#fff5e2;
+box-shadow:0 10px 20px rgba(0,0,0,0.15);
 }
 
-.magazine-header {
-padding: 1.5rem;
+.back-button{
+margin-bottom:2rem;
+background:none;
+border:none;
+font-family:'Inter',sans-serif;
+font-size:0.85rem;
+font-weight:600;
+letter-spacing:1px;
+cursor:pointer;
+color:#2c3e2f;
 }
 
-.current-issue {
-padding: 1.5rem;
+/* ================= FOOTER ================= */
+
+.preview-note{
+margin-top:2rem;
+padding:1rem 3rem 2rem 3rem;
+border-top:1px solid #f0e7db;
+font-style:italic;
+color:#6f6a5c;
+font-size:0.85rem;
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
 }
 
-.mag-name {
-font-size: 2.5rem;
+footer{
+background:#faf5ea;
+text-align:center;
+padding:1rem;
+font-size:0.7rem;
+color:#7b725e;
+font-family:monospace;
+border-top:1px solid #e6dbc9;
 }
 
-.current-issue-title {
-font-size: 1.8rem;
+/* ================= ANIMATION ================= */
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(8px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:780px){
+
+.magazine-container{
+flex-direction:column;
+}
+
+.issues-sidebar{
+width:100%;
+max-height:280px;
+}
+
+.magazine-header,
+.current-issue,
+.category-page{
+padding:1.5rem;
+}
+
+.mag-name{
+font-size:2.5rem;
+}
+
+.current-issue-title{
+font-size:1.8rem;
 }
 
 }
@@ -268,7 +315,7 @@ font-size: 1.8rem;
 
 <div class="magazine-container">
 
-<!-- SIDEBAR -->
+<!-- ================= SIDEBAR ================= -->
 
 <aside class="issues-sidebar">
 
@@ -279,110 +326,38 @@ font-size: 1.8rem;
 
 <div class="issues-list">
 
-<!-- SCIENCE -->
-<div class="issue-group">
-
-<button class="issue-link expandable">
+<button class="issue-link" data-category="science">
 Science
-<span class="issue-date">Date</span>
 </button>
 
-<div class="article-bubbles">
-<button class="article-bubble">Article #1</button>
-<button class="article-bubble">Article #2</button>
-<button class="article-bubble">Article #3</button>
-</div>
-
-</div>
-
-<!-- LITERATURE -->
-<div class="issue-group">
-
-<button class="issue-link expandable">
+<button class="issue-link" data-category="literature">
 Literature
-<span class="issue-date">Date</span>
 </button>
 
-<div class="article-bubbles">
-<button class="article-bubble">Article #1</button>
-<button class="article-bubble">Article #2</button>
-<button class="article-bubble">Article #3</button>
-</div>
-
-</div>
-
-<!-- MATHEMATICS -->
-<div class="issue-group">
-
-<button class="issue-link expandable">
+<button class="issue-link" data-category="mathematics">
 Mathematics
-<span class="issue-date">Date</span>
 </button>
 
-<div class="article-bubbles">
-<button class="article-bubble">Article #1</button>
-<button class="article-bubble">Article #2</button>
-<button class="article-bubble">Article #3</button>
-</div>
-
-</div>
-
-<!-- ART -->
-<div class="issue-group">
-
-<button class="issue-link expandable">
+<button class="issue-link" data-category="art">
 Art
-<span class="issue-date">Date</span>
 </button>
 
-<div class="article-bubbles">
-<button class="article-bubble">Article #1</button>
-<button class="article-bubble">Article #2</button>
-<button class="article-bubble">Article #3</button>
-</div>
-
-</div>
-
-<!-- PHILOSOPHER -->
-<div class="issue-group">
-
-<button class="issue-link expandable">
+<button class="issue-link" data-category="philosopher">
 Philosopher
-<span class="issue-date">Date</span>
 </button>
 
-<div class="article-bubbles">
-<button class="article-bubble">Article #1</button>
-<button class="article-bubble">Article #2</button>
-<button class="article-bubble">Article #3</button>
-</div>
-
-</div>
-
-<!-- SPECIAL -->
-<div class="issue-group">
-
-<button class="issue-link expandable">
+<button class="issue-link" data-category="special">
 Special
-<span class="issue-date">Date</span>
 </button>
-
-<div class="article-bubbles">
-<button class="article-bubble">Article #1</button>
-<button class="article-bubble">Article #2</button>
-<button class="article-bubble">Article #3</button>
-</div>
-
-</div>
 
 </div>
 
 <div class="sidebar-header"
-style="border-top: 1px solid rgba(255,255,245,0.1);
-margin-top: auto;
-border-bottom: none;">
+style="border-top:1px solid rgba(255,255,245,0.1);
+margin-top:auto;
+border-bottom:none;">
 
-<p style="font-size: 0.7rem;">
+<p style="font-size:0.7rem;">
 ✨ complete archive since April 2026
 </p>
 
@@ -390,9 +365,13 @@ border-bottom: none;">
 
 </aside>
 
-<!-- MAIN CONTENT -->
+<!-- ================= MAIN CONTENT ================= -->
 
 <main class="main-content">
+
+<!-- FRONT PAGE -->
+
+<div id="frontPage">
 
 <div class="magazine-header">
 
@@ -405,8 +384,6 @@ TABULA RASA MEDIA
 </div>
 
 </div>
-
-<!-- CURRENT ISSUE -->
 
 <div class="current-issue">
 
@@ -429,17 +406,15 @@ loading="lazy"
 <div class="feature-text">
 
 <h1 class="current-issue-title">
-The Beginning of a New Intellectual Era
+title
 </h1>
 
 <div class="issue-description">
-In our Spring 2026 edition, we explore the evolving
-intersection of science, literature, mathematics,
-art, and philosophy in the modern world.
+In our Spring 2026 edition, we blah blah blah.
+First edition yada yada.
 </div>
 
 <div class="meta-info">
-<span>📅 Published: April 22, 2026</span>
 <span>📄 1 million pages</span>
 <span>🎨 Cover art: PLACEHOLDER</span>
 </div>
@@ -454,10 +429,8 @@ READ THE ISSUE →
 
 </div>
 
-<!-- EXTRA NOTE -->
-
 <div class="preview-note">
-<span>✨ INSIDE THIS ISSUE: SCIENCE • ART • MATHEMATICS</span>
+<span>✨ INSIDE THIS ISSUE: PLHO • PLHO • PLHO</span>
 <span>🔖 DIGITAL ONLY</span>
 </div>
 
@@ -466,85 +439,137 @@ READ THE ISSUE →
 All rights reserved.
 </footer>
 
+</div>
+
+<!-- ================= CATEGORY PAGE ================= -->
+
+<div class="category-page" id="categoryPage">
+
+<button class="back-button">
+← BACK TO FRONT PAGE
+</button>
+
+<h1 class="category-title" id="categoryTitle">
+Science
+</h1>
+
+<div class="category-subtitle">
+Archived articles and essays
+</div>
+
+<div class="article-grid">
+
+<button class="article-bubble">
+Article #1
+</button>
+
+<button class="article-bubble">
+Article #2
+</button>
+
+<button class="article-bubble">
+Article #3
+</button>
+
+</div>
+
+</div>
+
 </main>
 
 </div>
 
-<!-- SCRIPT -->
-
 <script>
 
-(function() {
+const issueLinks =
+document.querySelectorAll('.issue-link');
 
-/* expandable sections */
+const frontPage =
+document.getElementById('frontPage');
 
-const expandableLinks =
-document.querySelectorAll('.expandable');
+const categoryPage =
+document.getElementById('categoryPage');
 
-expandableLinks.forEach(button => {
+const categoryTitle =
+document.getElementById('categoryTitle');
 
-button.addEventListener('click', function() {
+const backButton =
+document.querySelector('.back-button');
 
-const bubbleSection =
-this.parentElement.querySelector('.article-bubbles');
+/* OPEN CATEGORY PAGE */
 
-bubbleSection.classList.toggle('active');
+issueLinks.forEach(link => {
+
+link.addEventListener('click', () => {
+
+const category =
+link.dataset.category;
+
+categoryTitle.innerText =
+category.charAt(0).toUpperCase() +
+category.slice(1);
+
+frontPage.style.display = 'none';
+
+categoryPage.classList.add('active');
 
 });
 
 });
 
-/* article buttons */
+/* BACK BUTTON */
+
+backButton.addEventListener('click', () => {
+
+categoryPage.classList.remove('active');
+
+frontPage.style.display = 'block';
+
+});
+
+/* ARTICLE BUTTONS */
 
 const articleButtons =
 document.querySelectorAll('.article-bubble');
 
 articleButtons.forEach(button => {
 
-button.addEventListener('click', function(e) {
+button.addEventListener('click', () => {
 
-e.stopPropagation();
-
-showToast(`📄 Opening ${this.innerText}`);
+showToast(`📄 Opening ${button.innerText}`);
 
 });
 
 });
 
-/* current issue button */
+/* READ ISSUE BUTTON */
 
-const readBtn =
-document.querySelector('.read-more');
+document.querySelector('.read-more')
+.addEventListener('click', () => {
 
-if (readBtn) {
-
-readBtn.addEventListener('click', () => {
-
-showToast(`✨ Opening CURRENT ISSUE`);
+showToast('✨ Opening current issue');
 
 });
 
-}
+/* TOAST */
 
-/* toast notification */
+function showToast(message){
 
-function showToast(msg) {
+const toast =
+document.createElement('div');
 
-let toast = document.createElement('div');
-
-toast.innerText = msg;
+toast.innerText = message;
 
 toast.style.position = 'fixed';
 toast.style.bottom = '30px';
 toast.style.left = '50%';
 toast.style.transform = 'translateX(-50%)';
-toast.style.backgroundColor = '#2c3e2f';
+toast.style.background = '#2c3e2f';
 toast.style.color = '#fcf5e6';
 toast.style.padding = '12px 24px';
-toast.style.borderRadius = '40px';
-toast.style.fontFamily = "'Inter', system-ui, sans-serif";
+toast.style.borderRadius = '999px';
+toast.style.fontFamily = 'Inter, sans-serif';
 toast.style.fontSize = '0.85rem';
-toast.style.fontWeight = '500';
 toast.style.zIndex = '9999';
 toast.style.boxShadow = '0 8px 20px rgba(0,0,0,0.2)';
 toast.style.border = '1px solid #ddcca5';
@@ -554,19 +579,17 @@ document.body.appendChild(toast);
 setTimeout(() => {
 
 toast.style.opacity = '0';
-toast.style.transition = 'opacity 0.4s';
+toast.style.transition = '0.4s';
 
 setTimeout(() => {
 
 toast.remove();
 
-}, 400);
+},400);
 
-}, 2300);
+},2200);
 
 }
-
-})();
 
 </script>
 
