@@ -4,9 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Vita Nova — The Front Page</title>
+<title>Vita Nova Media</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
+
+:root{
+
+--mist-blue:#B1C7D4;
+--steel-blue:#849AAD;
+--gold-olive:#A1941F;
+--warm-brown:#605246;
+--wine:#5E1C23;
+
+--paper:#F8F4ED;
+--paper-dark:#EFE8DD;
+--white:#ffffff;
+
+--text:#2c2c2c;
+
+}
+
+/* ================= RESET ================= */
 
 *{
 margin:0;
@@ -14,296 +34,580 @@ padding:0;
 box-sizing:border-box;
 }
 
+html{
+scroll-behavior:smooth;
+}
+
 body{
-background:#faf7f2;
-font-family:'Georgia','Times New Roman',serif;
-color:#1e2a2e;
-line-height:1.4;
-}
-
-/* ================= LAYOUT ================= */
-
-.magazine-container{
-display:flex;
-min-height:100vh;
-max-width:1400px;
-margin:0 auto;
-background:#fff;
-box-shadow:0 0 30px rgba(0,0,0,0.03);
-}
-
-/* ================= SIDEBAR ================= */
-
-.issues-sidebar{
-flex:0 0 280px;
-background:#2c3e2f;
-color:#ede7dc;
-display:flex;
-flex-direction:column;
-box-shadow:2px 0 12px rgba(0,0,0,0.05);
-}
-
-.sidebar-header{
-padding:2rem 1.5rem 1rem 1.5rem;
-border-bottom:1px solid rgba(255,255,245,0.2);
-}
-
-.sidebar-header h3{
-font-family:'Inter',sans-serif;
-font-size:0.9rem;
-font-weight:500;
-letter-spacing:1px;
-text-transform:uppercase;
-color:#dcd7c2;
-margin-bottom:0.5rem;
-}
-
-.sidebar-header p{
-font-size:0.75rem;
-opacity:0.75;
-font-style:italic;
-}
-
-/* ================= ISSUE LINKS ================= */
-
-.issues-list{
-flex:1;
-overflow-y:auto;
-padding:1rem 0 2rem 0;
-}
-
-.issue-link{
-display:block;
-width:100%;
-padding:0.9rem 1.5rem;
-background:none;
-border:none;
-text-align:left;
-cursor:pointer;
-color:#f0ede5;
-font-family:'Inter',sans-serif;
-font-size:0.95rem;
-font-weight:450;
-border-left:3px solid transparent;
-border-bottom:1px solid rgba(255,245,215,0.08);
-transition:all 0.2s ease;
-}
-
-.issue-link:hover{
-background:#3f5541;
-border-left-color:#e5c687;
-padding-left:1.8rem;
-color:#fff9ef;
-}
-
-/* ================= MAIN CONTENT ================= */
-
-.main-content{
-flex:1;
-display:flex;
-flex-direction:column;
-background:#fff;
+background:var(--paper);
+font-family:'Georgia', serif;
+color:var(--text);
+line-height:1.8;
+overflow-x:hidden;
 }
 
 /* ================= HEADER ================= */
 
-.magazine-header{
-padding:2.5rem 3rem 1rem 3rem;
-border-bottom:1px solid #eae3d4;
-}
+header{
 
-.mag-name{
-font-size:3.8rem;
-font-weight:700;
-font-family:'Playfair Display','Georgia',serif;
-color:#2c3e2f;
-line-height:1.1;
-}
+position:fixed;
+top:0;
+left:0;
+right:0;
 
-.mag-tagline{
-font-size:0.8rem;
-text-transform:uppercase;
-letter-spacing:3px;
-color:#a28b62;
-margin-top:0.6rem;
-font-family:'Inter',sans-serif;
-}
+z-index:1000;
 
-/* ================= FRONT PAGE ================= */
+background:rgba(248,244,237,0.92);
+backdrop-filter:blur(12px);
 
-.current-issue{
-padding:2rem 3rem 3rem 3rem;
-}
+padding:1.2rem 6vw;
 
-.issue-badge{
-display:inline-block;
-font-family:'Inter',sans-serif;
-font-size:0.7rem;
-font-weight:600;
-text-transform:uppercase;
-background:#2c3e2f;
-color:#f9efdf;
-padding:0.2rem 1rem;
-border-radius:30px;
-letter-spacing:0.8px;
-margin-bottom:1.2rem;
-}
-
-.feature-grid{
 display:flex;
-flex-wrap:wrap;
+justify-content:space-between;
+align-items:center;
+
+border-bottom:1px solid rgba(0,0,0,0.08);
+
+}
+
+.logo{
+
+font-family:'Playfair Display', serif;
+font-size:2rem;
+font-weight:700;
+
+color:var(--wine);
+
+letter-spacing:1px;
+
+}
+
+nav{
+
+display:flex;
 gap:2rem;
-align-items:flex-start;
+
 }
 
-.feature-image{
-flex:1.2;
-min-width:240px;
+nav a{
+
+text-decoration:none;
+
+font-family:'Inter', sans-serif;
+font-size:.85rem;
+font-weight:600;
+
+letter-spacing:1px;
+text-transform:uppercase;
+
+color:var(--warm-brown);
+
+transition:.2s;
+
 }
 
-.feature-image img{
+nav a:hover{
+color:var(--wine);
+}
+
+/* ================= HERO ================= */
+
+.hero{
+
+position:relative;
+
+padding-top:90px;
+
+background:var(--paper);
+
+}
+
+.hero img{
+
 width:100%;
 display:block;
-border-radius:6px;
-box-shadow:0 16px 28px -12px rgba(0,0,0,0.2);
-object-fit:cover;
-aspect-ratio:4/3;
-border-radius:40px;
-margin-top:0.5rem;
+
 }
 
-.read-more:hover{
-background:#2c3e2f;
-color:#fef7e8;
+.hero-overlay{
+
+position:absolute;
+
+bottom:8%;
+left:8%;
+
+max-width:650px;
+
+background:rgba(248,244,237,0.88);
+
+padding:2rem;
+
+border-radius:30px;
+
+backdrop-filter:blur(10px);
+
 }
 
-/* ================= CATEGORY PAGE ================= */
+.issue-label{
 
-.category-page{
-display:none;
-padding:3rem;
-animation:fadeIn 0.3s ease;
+font-family:'Inter',sans-serif;
+font-size:.75rem;
+font-weight:600;
+
+letter-spacing:2px;
+text-transform:uppercase;
+
+color:var(--gold-olive);
+
+margin-bottom:1rem;
+
 }
 
-.category-page.active{
-display:block;
-}
+.hero-overlay h1{
 
-.category-title{
-font-size:2.5rem;
 font-family:'Playfair Display',serif;
-color:#2c3e2f;
-margin-bottom:0.8rem;
+font-size:5rem;
+
+line-height:1;
+
+color:var(--wine);
+
+margin-bottom:1rem;
+
 }
 
-.category-subtitle{
-font-size:1rem;
-color:#6f6a5c;
-margin-bottom:2rem;
-font-style:italic;
+.hero-overlay p{
+
+font-size:1.15rem;
+
+color:var(--warm-brown);
+
+}
+
+/* ================= INTRO ================= */
+
+.intro{
+
+padding:8rem 10vw;
+
+background:white;
+
+}
+
+.section-label{
+
+font-family:'Inter',sans-serif;
+
+font-size:.8rem;
+font-weight:600;
+
+text-transform:uppercase;
+letter-spacing:2px;
+
+color:var(--gold-olive);
+
+margin-bottom:1rem;
+
+}
+
+.intro h2{
+
+font-family:'Playfair Display',serif;
+
+font-size:3rem;
+
+color:var(--wine);
+
+margin-bottom:1.5rem;
+
+}
+
+.intro p{
+
+max-width:900px;
+
+font-size:1.1rem;
+
+}
+
+/* ================= FEATURED ================= */
+
+.featured{
+
+padding:7rem 8vw;
+
+background:var(--paper-dark);
+
+}
+
+.featured-title{
+
+font-family:'Playfair Display',serif;
+font-size:3rem;
+
+color:var(--wine);
+
+margin-bottom:3rem;
+
+}
+
+/* ================= CATEGORY GRID ================= */
+
+.categories{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(280px,1fr));
+
+gap:2rem;
+
+}
+
+.card{
+
+background:white;
+
+padding:2.5rem;
+
+border-radius:30px;
+
+box-shadow:
+0 15px 40px rgba(0,0,0,0.08);
+
+transition:.25s;
+
+cursor:pointer;
+
+}
+
+.card:hover{
+
+transform:translateY(-8px);
+
+}
+
+.card h3{
+
+font-family:'Playfair Display',serif;
+
+font-size:1.8rem;
+
+margin-bottom:1rem;
+
+}
+
+.card p{
+
+font-size:.95rem;
+
+line-height:1.7;
+
+}
+
+.science{
+border-top:10px solid var(--mist-blue);
+}
+
+.literature{
+border-top:10px solid var(--wine);
+}
+
+.mathematics{
+border-top:10px solid var(--gold-olive);
+}
+
+.art{
+border-top:10px solid var(--steel-blue);
+}
+
+.philosophy{
+border-top:10px solid var(--warm-brown);
+}
+
+.special{
+border-top:10px solid #333;
+}
+
+/* ================= ARTICLES ================= */
+
+.articles{
+
+padding:8rem 10vw;
+
+background:white;
+
 }
 
 .article-grid{
-display:flex;
-gap:1.5rem;
-flex-wrap:wrap;
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(350px,1fr));
+
+gap:2rem;
+
+margin-top:3rem;
+
 }
 
-.article-bubble{
-border:none;
-background:#f2e7d1;
-color:#2c3e2f;
-padding:1.4rem 2rem;
-border-radius:999px;
+.article{
+
+background:var(--paper);
+
+border-radius:30px;
+
+overflow:hidden;
+
+transition:.25s;
+
+}
+
+.article:hover{
+
+transform:translateY(-6px);
+
+}
+
+.article-image{
+
+height:220px;
+
+background:linear-gradient(
+135deg,
+var(--mist-blue),
+var(--steel-blue)
+);
+
+}
+
+.article-content{
+
+padding:2rem;
+
+}
+
+.article-category{
+
 font-family:'Inter',sans-serif;
-font-size:1rem;
-font-weight:600;
-cursor:pointer;
-transition:all 0.2s ease;
-min-width:180px;
-box-shadow:0 4px 10px rgba(0,0,0,0.12);
-}
 
-.article-bubble:hover{
-transform:translateY(-3px);
-background:#fff5e2;
-box-shadow:0 10px 20px rgba(0,0,0,0.15);
-}
+font-size:.75rem;
 
-.back-button{
-margin-bottom:2rem;
-background:none;
-border:none;
-font-family:'Inter',sans-serif;
-font-size:0.85rem;
-font-weight:600;
+font-weight:700;
+
 letter-spacing:1px;
+
+text-transform:uppercase;
+
+color:var(--gold-olive);
+
+margin-bottom:.8rem;
+
+}
+
+.article h3{
+
+font-family:'Playfair Display',serif;
+
+font-size:1.7rem;
+
+color:var(--wine);
+
+margin-bottom:.8rem;
+
+}
+
+/* ================= ARCHIVE ================= */
+
+.archive{
+
+padding:8rem 10vw;
+
+background:var(--paper-dark);
+
+}
+
+.archive h2{
+
+font-family:'Playfair Display',serif;
+
+font-size:3rem;
+
+color:var(--wine);
+
+margin-bottom:2rem;
+
+}
+
+.archive-grid{
+
+display:flex;
+
+flex-wrap:wrap;
+
+gap:1rem;
+
+}
+
+.archive-grid button{
+
+background:white;
+
+border:none;
+
+padding:1rem 1.5rem;
+
+border-radius:999px;
+
+font-family:'Inter',sans-serif;
+
+font-weight:600;
+
 cursor:pointer;
-color:#2c3e2f;
+
+transition:.2s;
+
+color:var(--wine);
+
+}
+
+.archive-grid button:hover{
+
+background:var(--wine);
+
+color:white;
+
+}
+
+/* ================= NEWSLETTER ================= */
+
+.newsletter{
+
+padding:8rem 10vw;
+
+background:var(--wine);
+
+text-align:center;
+
+color:white;
+
+}
+
+.newsletter h2{
+
+font-family:'Playfair Display',serif;
+
+font-size:3rem;
+
+margin-bottom:1rem;
+
+}
+
+.newsletter p{
+
+max-width:700px;
+
+margin:auto;
+
+margin-bottom:2rem;
+
+}
+
+.newsletter input{
+
+padding:1rem 1.2rem;
+
+width:320px;
+
+max-width:90%;
+
+border:none;
+
+border-radius:999px;
+
+margin-right:.5rem;
+
+}
+
+.newsletter button{
+
+padding:1rem 1.5rem;
+
+border:none;
+
+border-radius:999px;
+
+cursor:pointer;
+
+font-weight:600;
+
+background:var(--gold-olive);
+
+color:white;
+
 }
 
 /* ================= FOOTER ================= */
 
-.preview-note{
-margin-top:2rem;
-padding:1rem 3rem 2rem 3rem;
-border-top:1px solid #f0e7db;
-font-style:italic;
-color:#6f6a5c;
-font-size:0.85rem;
-display:flex;
-justify-content:space-between;
-flex-wrap:wrap;
-}
-
 footer{
-background:#faf5ea;
+
+background:#40141a;
+
+padding:2rem;
+
 text-align:center;
-padding:1rem;
-font-size:0.7rem;
-color:#7b725e;
-font-family:monospace;
-border-top:1px solid #e6dbc9;
-}
 
-/* ================= ANIMATION ================= */
+color:#ddd;
 
-@keyframes fadeIn{
-from{
-opacity:0;
-transform:translateY(8px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
+font-family:'Inter',sans-serif;
+
+font-size:.8rem;
+
 }
 
 /* ================= MOBILE ================= */
 
-@media(max-width:780px){
+@media(max-width:900px){
 
-.magazine-container{
+.hero-overlay{
+
+position:relative;
+
+left:auto;
+bottom:auto;
+
+margin:2rem;
+
+}
+
+.hero-overlay h1{
+
+font-size:3rem;
+
+}
+
+.intro h2,
+.featured-title,
+.archive h2,
+.newsletter h2{
+
+font-size:2.2rem;
+
+}
+
+header{
+
 flex-direction:column;
+gap:1rem;
+
 }
 
-.issues-sidebar{
-width:100%;
-max-height:280px;
-}
+nav{
 
-.magazine-header,
-.current-issue,
-.category-page{
-padding:1.5rem;
-}
+flex-wrap:wrap;
+justify-content:center;
 
-.mag-name{
-font-size:2.5rem;
-}
-
-.current-issue-title{
-font-size:1.8rem;
 }
 
 }
@@ -313,285 +617,288 @@ font-size:1.8rem;
 
 <body>
 
-<div class="magazine-container">
+<header>
 
-<!-- ================= SIDEBAR ================= -->
-
-<aside class="issues-sidebar">
-
-<div class="sidebar-header">
-<h3>📚 ARCHIVE</h3>
-<p>previous editions — scroll to explore</p>
+<div class="logo">
+VITA NOVA
 </div>
 
-<div class="issues-list">
+<nav>
 
-<button class="issue-link" data-category="science">
-Science
-</button>
+<a href="#intro">About</a>
+<a href="#categories">Categories</a>
+<a href="#articles">Articles</a>
+<a href="#archive">Archive</a>
 
-<button class="issue-link" data-category="literature">
-Literature
-</button>
+</nav>
 
-<button class="issue-link" data-category="mathematics">
-Mathematics
-</button>
+</header>
 
-<button class="issue-link" data-category="art">
-Art
-</button>
+<!-- HERO -->
 
-<button class="issue-link" data-category="philosopher">
-Philosopher
-</button>
+<section class="hero">
 
-<button class="issue-link" data-category="special">
-Special
-</button>
+<!-- Replace with your uploaded artwork -->
 
+<img
+src="33566A2C-DD6C-427A-B110-EB225737B714.jpeg"
+alt="Vita Nova Cover">
+
+<div class="hero-overlay">
+
+<div class="issue-label">
+Current Issue • June 2026
 </div>
 
-<div class="sidebar-header"
-style="border-top:1px solid rgba(255,255,245,0.1);
-margin-top:auto;
-border-bottom:none;">
+<h1>
+Vita Nova
+</h1>
 
-<p style="font-size:0.7rem;">
-✨ complete archive since April 2026
+<p>
+An independent digital magazine exploring
+science, literature, mathematics, art,
+and philosophy through a single shared lens:
+the pursuit of understanding.
 </p>
 
 </div>
 
-</aside>
+</section>
 
-<!-- ================= MAIN CONTENT ================= -->
+<!-- INTRO -->
 
-<main class="main-content">
+<section class="intro" id="intro">
 
-<!-- FRONT PAGE -->
-
-<div id="frontPage">
-
-<div class="magazine-header">
-
-<div class="mag-name">
-VITA NOVA MEDIA
+<div class="section-label">
+Editor's Letter
 </div>
 
-<div class="mag-tagline">
-✦ INDEPENDENT MAGAZINE ✦
+<h2>
+A New Life of Ideas
+</h2>
+
+<p>
+
+Vita Nova exists at the intersection of
+curiosity and creativity.
+
+Every issue gathers writers,
+scientists, artists, mathematicians,
+philosophers, and dreamers
+to explore one theme from many directions.
+
+Knowledge should not live in separate rooms.
+It should converse.
+
+</p>
+
+</section>
+
+<!-- CATEGORIES -->
+
+<section class="featured" id="categories">
+
+<h2 class="featured-title">
+Explore the Archive
+</h2>
+
+<div class="categories">
+
+<div class="card science">
+<h3>Science</h3>
+<p>
+Research, discovery, technology,
+and the changing frontiers of knowledge.
+</p>
+</div>
+
+<div class="card literature">
+<h3>Literature</h3>
+<p>
+Essays, poetry, fiction,
+and reflections on language.
+</p>
+</div>
+
+<div class="card mathematics">
+<h3>Mathematics</h3>
+<p>
+Patterns, logic,
+abstraction, and beauty.
+</p>
+</div>
+
+<div class="card art">
+<h3>Art</h3>
+<p>
+Visual culture,
+creative process,
+and artistic movements.
+</p>
+</div>
+
+<div class="card philosophy">
+<h3>Philosophy</h3>
+<p>
+Ideas worth questioning,
+rethinking,
+and discussing.
+</p>
+</div>
+
+<div class="card special">
+<h3>Special Editions</h3>
+<p>
+Unique collections,
+guest curators,
+and experimental issues.
+</p>
 </div>
 
 </div>
 
-<div class="current-issue">
+</section>
 
-<div class="issue-badge">
-📖 CURRENT ISSUE — June 2026
+<!-- ARTICLES -->
+
+<section class="articles" id="articles">
+
+<div class="section-label">
+Featured Reading
 </div>
 
-<div class="feature-grid">
-
-<div class="feature-image">
-
-<img
-src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=800&auto=format"
-alt="Current issue featured photograph"
-loading="lazy"
->
-
-</div>
-
-<div class="feature-text">
-
-<h1 class="current-issue-title">
-title
-</h1>
-
-<div class="issue-description">
-In our Spring 2026 edition, we blah blah blah.
-First edition yada yada.
-</div>
-
-<div class="meta-info">
-<span>📄 1 million pages</span>
-<span>🎨 Cover art: PLACEHOLDER</span>
-</div>
-
-<button class="read-more">
-READ THE ISSUE →
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="preview-note">
-<span>✨ INSIDE THIS ISSUE: PLHO • PLHO • PLHO</span>
-<span>🔖 DIGITAL ONLY</span>
-</div>
-
-<footer>
-© 2026 Vita Nova Media — Independent monthly magazine.
-All rights reserved.
-</footer>
-
-</div>
-
-<!-- ================= CATEGORY PAGE ================= -->
-
-<div class="category-page" id="categoryPage">
-
-<button class="back-button">
-← BACK TO FRONT PAGE
-</button>
-
-<h1 class="category-title" id="categoryTitle">
-Science
-</h1>
-
-<div class="category-subtitle">
-Science articles
-</div>
+<h2 class="featured-title">
+Inside This Issue
+</h2>
 
 <div class="article-grid">
 
-<button class="article-bubble">
-Article #1
-</button>
+<div class="article">
 
-<button class="article-bubble">
-Article #2
-</button>
+<div class="article-image"></div>
 
-<button class="article-bubble">
-Article #3
-</button>
+<div class="article-content">
+
+<div class="article-category">
+Science
+</div>
+
+<h3>
+The Shape of Discovery
+</h3>
+
+<p>
+How scientific revolutions begin
+with questions rather than answers.
+</p>
 
 </div>
 
 </div>
 
-</main>
+<div class="article">
+
+<div class="article-image"></div>
+
+<div class="article-content">
+
+<div class="article-category">
+Literature
+</div>
+
+<h3>
+Stories That Refuse to End
+</h3>
+
+<p>
+Exploring narrative memory
+across generations.
+</p>
 
 </div>
 
-<script>
+</div>
 
-const issueLinks =
-document.querySelectorAll('.issue-link');
+<div class="article">
 
-const frontPage =
-document.getElementById('frontPage');
+<div class="article-image"></div>
 
-const categoryPage =
-document.getElementById('categoryPage');
+<div class="article-content">
 
-const categoryTitle =
-document.getElementById('categoryTitle');
+<div class="article-category">
+Philosophy
+</div>
 
-const backButton =
-document.querySelector('.back-button');
+<h3>
+The Ethics of Wonder
+</h3>
 
-/* OPEN CATEGORY PAGE */
+<p>
+Why curiosity may be
+our greatest moral responsibility.
+</p>
 
-issueLinks.forEach(link => {
+</div>
 
-link.addEventListener('click', () => {
+</div>
 
-const category =
-link.dataset.category;
+</div>
 
-categoryTitle.innerText =
-category.charAt(0).toUpperCase() +
-category.slice(1);
+</section>
 
-frontPage.style.display = 'none';
+<!-- ARCHIVE -->
 
-categoryPage.classList.add('active');
+<section class="archive" id="archive">
 
-});
+<h2>
+Past Issues
+</h2>
 
-});
+<div class="archive-grid">
 
-/* BACK BUTTON */
+<button>April 2026</button>
+<button>May 2026</button>
+<button>June 2026</button>
+<button>July 2026</button>
+<button>August 2026</button>
 
-backButton.addEventListener('click', () => {
+</div>
 
-categoryPage.classList.remove('active');
+</section>
 
-frontPage.style.display = 'block';
+<!-- NEWSLETTER -->
 
-});
+<section class="newsletter">
 
-/* ARTICLE BUTTONS */
+<h2>
+Join Vita Nova
+</h2>
 
-const articleButtons =
-document.querySelectorAll('.article-bubble');
+<p>
+Receive every issue,
+exclusive essays,
+and archive updates directly in your inbox.
+</p>
 
-articleButtons.forEach(button => {
+<div>
 
-button.addEventListener('click', () => {
+<input
+type="email"
+placeholder="Email address">
 
-showToast(`📄 Opening ${button.innerText}`);
+<button>
+Subscribe
+</button>
 
-});
+</div>
 
-});
+</section>
 
-/* READ ISSUE BUTTON */
+<footer>
 
-document.querySelector('.read-more')
-.addEventListener('click', () => {
+© 2026 Vita Nova Media • Independent Digital Magazine
 
-showToast('✨ Opening current issue');
-
-});
-
-/* TOAST */
-
-function showToast(message){
-
-const toast =
-document.createElement('div');
-
-toast.innerText = message;
-
-toast.style.position = 'fixed';
-toast.style.bottom = '30px';
-toast.style.left = '50%';
-toast.style.transform = 'translateX(-50%)';
-toast.style.background = '#2c3e2f';
-toast.style.color = '#fcf5e6';
-toast.style.padding = '12px 24px';
-toast.style.borderRadius = '999px';
-toast.style.fontFamily = 'Inter, sans-serif';
-toast.style.fontSize = '0.85rem';
-toast.style.zIndex = '9999';
-toast.style.boxShadow = '0 8px 20px rgba(0,0,0,0.2)';
-toast.style.border = '1px solid #ddcca5';
-
-document.body.appendChild(toast);
-
-setTimeout(() => {
-
-toast.style.opacity = '0';
-toast.style.transition = '0.4s';
-
-setTimeout(() => {
-
-toast.remove();
-
-},400);
-
-},2200);
-
-}
-
-</script>
+</footer>
 
 </body>
 </html>
