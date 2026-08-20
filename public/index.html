@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Vita Nova</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+
+--mist-blue:#B1C7D4;
+--steel-blue:#849AAD;
+--gold-olive:#A1941F;
+--warm-brown:#605246;
+--wine:#5E1C23;
+
+--paper:#F8F4ED;
+--paper-dark:#EFE8DD;
+--white:#ffffff;
+
+--text:#2c2c2c;
+
+}
+
+/* Reset*/
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:var(--paper);
+font-family:'Georgia', serif;
+color:var(--text);
+line-height:1.8;
+overflow-x:hidden;
+}
+
+/* HEADER */
+
+header{
+
+position:fixed;
+top:0;
+left:0;
+right:0;
+
+z-index:1000;
+
+background:rgba(248,244,237,0.92);
+backdrop-filter:blur(12px);
+
+padding:1.2rem 6vw;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+border-bottom:1px solid rgba(0,0,0,0.08);
+
+}
+
+.logo{
+
+font-family:'Playfair Display', serif;
+font-size:2rem;
+font-weight:700;
+
+color:var(--wine);
+
+letter-spacing:1px;
+
+}
+
+nav{
+
+display:flex;
+gap:2rem;
+
+}
+
+nav a{
+
+text-decoration:none;
+
+font-family:'Inter', sans-serif;
+font-size:.85rem;
+font-weight:600;
+
+letter-spacing:1px;
+text-transform:uppercase;
+
+color:var(--warm-brown);
+
+transition:.2s;
+
+}
+
+nav a:hover{
+color:var(--wine);
+}
+
+/* HERO */
+
+.hero{
+
+position:relative;
+
+padding-top:90px;
+
+background:var(--paper);
+
+}
+
+.hero img{
+
+width:100%;
+display:block;
+
+}
+
+.hero-overlay{
+
+position:absolute;
+
+bottom:8%;
+left:8%;
+
+max-width:650px;
+
+background:rgba(248,244,237,0.88);
+
+padding:2rem;
+
+border-radius:30px;
+
+backdrop-filter:blur(10px);
+
+}
+
+.issue-label{
+
+font-family:'Inter',sans-serif;
+font-size:.75rem;
+font-weight:600;
+
+letter-spacing:2px;
+text-transform:uppercase;
+
+color:var(--gold-olive);
+
+margin-bottom:1rem;
+
+}
+
+.hero-overlay h1{
+
+font-family:'Playfair Display',serif;
+font-size:5rem;
+
+line-height:1;
+
+color:var(--wine);
+
+margin-bottom:1rem;
+
+}
+
+.hero-overlay p{
+
+font-size:1.15rem;
+
+color:var(--warm-brown);
+
+}
+
+/* INTRO */
+
+.intro{
+
+padding:8rem 10vw;
+
+background:white;
+
+}
+
+.section-label{
+
+font-family:'Inter',sans-serif;
+
+font-size:.8rem;
+font-weight:600;
+
+text-transform:uppercase;
+letter-spacing:2px;
+
+color:var(--gold-olive);
+
+margin-bottom:1rem;
+
+}
+
+.intro h2{
+
+font-family:'Playfair Display',serif;
+
+font-size:3rem;
+
+color:var(--wine);
+
+margin-bottom:1.5rem;
+
+}
+
+.intro p{
+
+max-width:900px;
+
+font-size:1.1rem;
+
+}
+
+/* FEATURED */
+
+.featured{
+
+padding:7rem 8vw;
+
+background:var(--paper-dark);
+
+}
+
+.featured-title{
+
+font-family:'Playfair Display',serif;
+font-size:3rem;
+
+color:var(--wine);
+
+margin-bottom:3rem;
+
+}
+
+/* CATEGORY GRID */
+
+.categories{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(280px,1fr));
+
+gap:2rem;
+
+}
+
+.card{
+
+background:white;
+
+padding:2.5rem;
+
+border-radius:30px;
+
+box-shadow:
+0 15px 40px rgba(0,0,0,0.08);
+
+transition:.25s;
+
+cursor:pointer;
+
+}
+
+.card:hover{
+
+transform:translateY(-8px);
+
+}
+
+.card h3{
+
+font-family:'Playfair Display',serif;
+
+font-size:1.8rem;
+
+margin-bottom:1rem;
+
+}
+
+.card p{
+
+font-size:.95rem;
+
+line-height:1.7;
+
+}
+
+.science{
+border-top:10px solid var(--mist-blue);
+}
+
+.literature{
+border-top:10px solid var(--wine);
+}
+
+.mathematics{
+border-top:10px solid var(--gold-olive);
+}
+
+.art{
+border-top:10px solid var(--steel-blue);
+}
+
+.philosophy{
+border-top:10px solid var(--warm-brown);
+}
+
+.special{
+border-top:10px solid #333;
+}
+
+/* ARTICLES */
+
+.articles{
+
+padding:8rem 10vw;
+
+background:white;
+
+}
+
+.article-grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(350px,1fr));
+
+gap:2rem;
+
+margin-top:3rem;
+
+}
+
+.article{
+
+background:var(--paper);
+
+border-radius:30px;
+
+overflow:hidden;
+
+transition:.25s;
+
+}
+
+.article:hover{
+
+transform:translateY(-6px);
+
+}
+
+.article-image{
+
+height:220px;
+
+background:linear-gradient(
+135deg,
+var(--mist-blue),
+var(--steel-blue)
+);
+
+}
+
+.article-content{
+
+padding:2rem;
+
+}
+
+.article-category{
+
+font-family:'Inter',sans-serif;
+
+font-size:.75rem;
+
+font-weight:700;
+
+letter-spacing:1px;
+
+text-transform:uppercase;
+
+color:var(--gold-olive);
+
+margin-bottom:.8rem;
+
+}
+
+.article h3{
+
+font-family:'Playfair Display',serif;
+
+font-size:1.7rem;
+
+color:var(--wine);
+
+margin-bottom:.8rem;
+
+}
+
+/* ARCHIVE */
+
+.archive{
+
+padding:8rem 10vw;
+
+background:var(--paper-dark);
+
+}
+
+.archive h2{
+
+font-family:'Playfair Display',serif;
+
+font-size:3rem;
+
+color:var(--wine);
+
+margin-bottom:2rem;
+
+}
+
+.archive-grid{
+
+display:flex;
+
+flex-wrap:wrap;
+
+gap:1rem;
+
+}
+
+.archive-grid button{
+
+background:white;
+
+border:none;
+
+padding:1rem 1.5rem;
+
+border-radius:999px;
+
+font-family:'Inter',sans-serif;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:.2s;
+
+color:var(--wine);
+
+}
+
+.archive-grid button:hover{
+
+background:var(--wine);
+
+color:white;
+
+}
+
+/* NEWSLETTER */
+
+.newsletter{
+
+padding:8rem 10vw;
+
+background:var(--wine);
+
+text-align:center;
+
+color:white;
+
+}
+
+.newsletter h2{
+
+font-family:'Playfair Display',serif;
+
+font-size:3rem;
+
+margin-bottom:1rem;
+
+}
+
+.newsletter p{
+
+max-width:700px;
+
+margin:auto;
+
+margin-bottom:2rem;
+
+}
+
+.newsletter input{
+
+padding:1rem 1.2rem;
+
+width:320px;
+
+max-width:90%;
+
+border:none;
+
+border-radius:999px;
+
+margin-right:.5rem;
+
+}
+
+.newsletter button{
+
+padding:1rem 1.5rem;
+
+border:none;
+
+border-radius:999px;
+
+cursor:pointer;
+
+font-weight:600;
+
+background:var(--gold-olive);
+
+color:white;
+
+}
+
+/* FOOTER */
+
+footer{
+
+background:#40141a;
+
+padding:2rem;
+
+text-align:center;
+
+color:#ddd;
+
+font-family:'Inter',sans-serif;
+
+font-size:.8rem;
+
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.hero-overlay{
+
+position:relative;
+
+left:auto;
+bottom:auto;
+
+margin:2rem;
+
+}
+
+.hero-overlay h1{
+
+font-size:3rem;
+
+}
+
+.intro h2,
+.featured-title,
+.archive h2,
+.newsletter h2{
+
+font-size:2.2rem;
+
+}
+
+header{
+
+flex-direction:column;
+gap:1rem;
+
+}
+
+nav{
+
+flex-wrap:wrap;
+justify-content:center;
+
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+VITA NOVA
+</div>
+
+<nav>
+
+<a href="#intro">About</a>
+<a href="#categories">Categories</a>
+<a href="#articles">Articles</a>
+<a href="#archive">Archive</a>
+
+</nav>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<!-- artwork -->
+
+<img
+src="front_end_image.jpg"
+alt="Vita Nova Cover">
+
+<div class="hero-overlay">
+
+<div class="issue-label">
+Current Issue • June 2026
+</div>
+
+<h1>
+Vita Nova
+</h1>
+
+<p>
+An independent digital magazine exploring arts, literature, and science.
+</p>
+
+</div>
+
+</section>
+
+<!-- INTRO -->
+
+<section class="intro" id="intro">
+
+<div class="section-label">
+Introduction
+</div>
+
+<h2>
+Aim
+</h2>
+
+<p>
+
+At Vita Nova, we aim to deliver reliable, well-researched and thought-provoking content across a wide spectrum of topics via completely student-made articles. We compel audiences to explore new topics, riches their understanding of our world and discover new perspectives. We allow not only for creative expressions from our writers, but insightful analytical articles. Our mission is to cultivate an online environment that ensured readers from across the globe have relevant, fascinating and enriching content to discover.
+
+</p>
+
+</section>
+
+<!-- CATEGORIES -->
+
+<section class="featured" id="categories">
+
+<h2 class="featured-title">
+Explore Past Issues
+</h2>
+
+<div class="categories">
+
+<div class="card science">
+<h3>Science</h3>
+<p>
+The raw mechanics of the universe, stripped of academic jargon.
+</p>
+</div>
+
+<div class="card literature">
+<h3>Literature</h3>
+<p>
+Words that bleed, dissecting the human condition on the page.
+</p>
+</div>
+
+<div class="card art">
+<h3>Art</h3>
+<p>
+The visual heartbeat of our culture, captured through an unfiltered lens.
+</p>
+</div>
+
+<div class="card philosophy">
+<h3>Philosophy</h3>
+<p>
+Radical questions that break down how we think and live.
+</p>
+</div>
+
+<div class="card special">
+<h3>Special Editions</h3>
+<p>
+Exclusive, deep-dive dossiers on the topics shaping our generation
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- ARTICLES -->
+
+<section class="articles" id="articles">
+
+<div class="section-label">
+Featured
+</div>
+
+<h2 class="featured-title">
+Inside Latest Issue
+</h2>
+
+<div class="article-grid">
+
+<div class="article">
+
+<div class="article-image"></div>
+
+<div class="article-content">
+
+<div class="article-category">
+Science
+</div>
+
+<h3>
+The Molecular Heartbeat
+</h3>
+
+<p>
+We explore the physics of a heartbeat and the chemistry of attraction, but we refuse to stop at the data. This issue reveals the inherent poetry inside the chaos of quantum mechanics and the cosmos, proving that science does not kill beauty—it uncovers it.
+</p>
+
+</div>
+
+</div>
+
+<div class="article">
+
+<div class="article-image"></div>
+
+<div class="article-content">
+
+<div class="article-category">
+Literature
+</div>
+
+<h3>
+Chronicles From The Wreckage
+</h3>
+
+<p>
+As society shifts toward strict metrics and algorithms, we defend the written word as our ultimate survival tool. We dissect the precise, almost mathematical architecture of storytelling, showing how writers use structure to capture the wild, unquantifiable human spirit.
+</p>
+
+</div>
+
+</div>
+
+<div class="article">
+
+<div class="article-image"></div>
+
+<div class="article-content">
+
+<div class="article-category">
+Philosophy
+</div>
+
+<h3>
+Autopsy of the Soul
+</h3>
+
+<p>
+We confront the cold reality of a world obsessed with utility over meaning. By examining the intersection of logic and emotion, we argue why a culture purely built on technology will starve without art, love, and the radical act of human expression.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ARCHIVE -->
+
+<section class="archive" id="archive">
+
+<h2>
+Past Issues
+</h2>
+
+<div class="archive-grid">
+
+<button>July? 2026</button>
+<button>UPCOMING 2026</button>
+<button>UPCOMING 2026</button>
+<button>UPCOMING 2026</button>
+<button>UPCOMING 2026</button>
+
+</div>
+
+</section>
+
+<!-- NEWSLETTER -->
+
+<section class="newsletter">
+
+<h2>
+Subscribe to Vita Nova
+</h2>
+
+<p>
+Receive every issue (I haven't made back-end or diff files for ts yet)
+</p>
+
+<div>
+
+<input
+type="email"
+placeholder="Email address">
+
+<button>
+Subscribe
+</button>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 Vita Nova Media • Independent Digital Magazine
+
+</footer>
+
+</body>
+</html>
