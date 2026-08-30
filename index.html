@@ -866,6 +866,23 @@ Subscribe
 © 2026 Vita Nova Media • Independent Digital Magazine
 
 </footer>
-
 </body>
+<!--POST-JULY -->
+<script type="module">
+  import { createClient } from
+    "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+  const SUPABASE_URL =
+    "https://YOUR-PROJECT.supabase.co";
+
+  const SUPABASE_KEY =
+    "sb_publishable_YOUR_KEY";
+
+  const supabase = createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+  console.log("Supabase connected");
+</script>
 </html>
