@@ -907,6 +907,7 @@ Past Issues
 </footer>
 <!-- POST-JULY WORK-->
 <script type="module">
+  im<script type="module">
   import { createClient } from
     "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
@@ -921,7 +922,67 @@ Past Issues
     SUPABASE_KEY
   );
 
-  console.log("Supabase connected");
+  const signupForm =
+    document.getElementById("signup-form");
+
+  const signupButton =
+    document.getElementById("signup-button");
+
+  const signupMessage =
+    document.getElementById("signup-message");
+
+  signupForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const fullName =
+      document.getElementById("full-name").value.trim();
+
+    const email =
+      document.getElementById("signup-email").value.trim();
+
+    const password =
+      document.getElementById("signup-password").value;
+
+    const newsletterOptIn =
+      document.getElementById("newsletter-opt-in").checked;
+
+    signupButton.disabled = true;
+    signupButton.textContent = "Creating account...";
+    signupMessage.textContent = "";
+
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: {
+          full_name: fullName,
+          newsletter_opt_in: newsletterOptIn
+        }
+      }
+    });
+
+    if (error) {
+      signupMessage.textContent =
+        `Unable to subscribe: ${error.message}`;
+
+      signupButton.disabled = false;
+      signupButton.textContent =
+        "Create Account & Subscribe";
+
+      return;
+    }
+
+    signupMessage.textContent =
+      "Success! Please check your email to confirm your account.";
+
+    signupForm.reset();
+    signupButton.disabled = false;
+    signupButton.textContent =
+      "Create Account & Subscribe";
+  });
 </script>
+
+</body>
+</html>
 </body>
 </html>
