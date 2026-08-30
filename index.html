@@ -839,25 +839,64 @@ Past Issues
 
 <section class="newsletter">
 
-<h2>
-Subscribe to Vita Nova
-</h2>
+<!-- NEWSLETTER -->
+<section class="newsletter" id="subscribe">
 
-<p>
-Receive every issue (I haven't made back-end or diff files for ts yet)
-</p>
+  <h2>Subscribe to Vita Nova</h2>
 
-<div>
+  <p>
+    Create a free account and receive every new issue by email.
+  </p>
 
-<input
-type="email"
-placeholder="Email address">
+  <form id="signup-form">
 
-<button>
-Subscribe
-</button>
+    <input
+      id="full-name"
+      type="text"
+      placeholder="Full name"
+      autocomplete="name"
+      required
+    >
 
-</div>
+    <input
+      id="signup-email"
+      type="email"
+      placeholder="Email address"
+      autocomplete="email"
+      required
+    >
+
+    <input
+      id="signup-password"
+      type="password"
+      placeholder="Create a password"
+      autocomplete="new-password"
+      minlength="4"
+      required
+    >
+
+    <label class="newsletter-consent">
+      <input
+        id="newsletter-opt-in"
+        type="checkbox"
+        required
+      >
+      <span>
+        I agree to receive Vita Nova newsletters by email.
+      </span>
+    </label>
+
+    <button id="signup-button" type="submit">
+      Create Account & Subscribe
+    </button>
+
+  </form>
+
+  <p
+    id="signup-message"
+    class="signup-message"
+    aria-live="polite"
+  ></p>
 
 </section>
 
@@ -866,8 +905,7 @@ Subscribe
 © 2026 Vita Nova Media • Independent Digital Magazine
 
 </footer>
-</body>
-<!--POST-JULY -->
+<!-- POST-JULY WORK-->
 <script type="module">
   import { createClient } from
     "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
@@ -885,4 +923,5 @@ Subscribe
 
   console.log("Supabase connected");
 </script>
+</body>
 </html>
