@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scripts | Vita Nova</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold-olive:#A1941F;
+  --warm-brown:#605246;
+  --wine:#5E1C23;
+  --paper:#F8F4ED;
+  --paper-dark:#EFE8DD;
+  --white:#ffffff;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  height:100vh;
+  overflow:hidden;
+  background:var(--paper);
+  color:#2c2c2c;
+}
+
+.reader-layout {
+  display:grid;
+  grid-template-columns:240px minmax(0, 1fr);
+  height:100vh;
+}
+
+.sidebar {
+  display:flex;
+  flex-direction:column;
+  gap:.8rem;
+  padding:2rem 1.5rem;
+  overflow-y:auto;
+  background:var(--wine);
+}
+
+.logo {
+  margin-bottom:1.5rem;
+  color:var(--white);
+  font-family:'Playfair Display', serif;
+  font-size:1.7rem;
+  font-weight:700;
+}
+
+.sidebar a,
+.sidebar button {
+  width:100%;
+  padding:1rem;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:12px;
+  background:transparent;
+  color:var(--white);
+  font-family:'Inter', sans-serif;
+  font-size:.9rem;
+  font-weight:600;
+  text-align:left;
+  text-decoration:none;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.sidebar a:hover,
+.sidebar button:hover,
+.sidebar button.active {
+  border-color:var(--gold-olive);
+  background:var(--gold-olive);
+}
+
+.document-area {
+  display:flex;
+  min-width:0;
+  height:100vh;
+  flex-direction:column;
+}
+
+.document-header {
+  flex-shrink:0;
+  padding:1rem 2rem;
+  border-bottom:1px solid rgba(0,0,0,.1);
+  background:var(--paper);
+}
+
+.document-header h1 {
+  color:var(--wine);
+  font-family:'Playfair Display', serif;
+  font-size:1.8rem;
+}
+
+#pdf-viewer {
+  display:block;
+  width:100%;
+  flex:1;
+  border:none;
+  background:var(--paper-dark);
+}
+
+@media (max-width:700px) {
+  .reader-layout {
+    display:flex;
+    flex-direction:column;
+  }
+
+  .sidebar {
+    display:grid;
+    grid-template-columns:repeat(4, minmax(110px, 1fr));
+    flex-shrink:0;
+    padding:.75rem;
+    overflow-x:auto;
+  }
+
+  .logo { display:none; }
+
+  .sidebar a,
+  .sidebar button {
+    text-align:center;
+    white-space:nowrap;
+  }
+
+  .document-area {
+    min-height:0;
+    flex:1;
+  }
+
+  .document-header { padding:.8rem 1rem; }
+  .document-header h1 { font-size:1.25rem; }
+}
+</style>
+</head>
+
+<body>
+<main class="reader-layout">
+  <aside class="sidebar">
+    <div class="logo">VITA NOVA</div>
+
+    <a href="index.html">← Back to Home</a>
+
+    <button class="script-button active"
+            data-pdf="pdfs/script-1.pdf"
+            data-title="Script 1">
+      Script 1
+    </button>
+
+    <button class="script-button"
+            data-pdf="pdfs/script-2.pdf"
+            data-title="Script 2">
+      Script 2
+    </button>
+
+    <button class="script-button"
+            data-pdf="pdfs/script-3.pdf"
+            data-title="Script 3">
+      Script 3
+    </button>
+  </aside>
+
+  <section class="document-area">
+    <header class="document-header">
+      <h1 id="document-title">Script 1</h1>
+    </header>
+
+    <iframe id="pdf-viewer"
+            src="pdfs/script-1.pdf"
+            title="Vita Nova PDF reader">
+    </iframe>
+  </section>
+</main>
+
+<script>
+const pdfViewer = document.getElementById('pdf-viewer');
+const documentTitle = document.getElementById('document-title');
+const scriptButtons = document.querySelectorAll('.script-button');
+
+scriptButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    pdfViewer.src = button.dataset.pdf;
+    documentTitle.textContent = button.dataset.title;
+
+    scriptButtons.forEach((item) => item.classList.remove('active'));
+    button.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
