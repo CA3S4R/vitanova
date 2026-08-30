@@ -569,33 +569,6 @@ color:white;
   font-size: .9rem;
 }
 
-.verification-panel {
-  max-width: 520px;
-  margin: 2rem auto 0;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(255,255,255,.3);
-}
-
-.verification-panel[hidden] {
-  display: none;
-}
-
-.verification-panel h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.8rem;
-  margin-bottom: .5rem;
-}
-
-.verification-panel p {
-  margin-bottom: 1rem;
-}
-
-#verification-code {
-  text-align: center;
-  letter-spacing: .35rem;
-  font-weight: 600;
-}
-
 /* FOOTER */
 
 footer{
@@ -942,45 +915,6 @@ Past Issues
     aria-live="polite"
   ></p>
 
-  <div id="verification-panel" class="verification-panel" hidden>
-    <h3>Verify your email</h3>
-
-    <p>
-      Enter the six-digit code sent to your email address.
-    </p>
-
-    <form id="verification-form">
-      <input
-        id="verification-email"
-        type="email"
-        placeholder="Email address"
-        autocomplete="email"
-        required
-      >
-
-      <input
-        id="verification-code"
-        type="text"
-        placeholder="000000"
-        autocomplete="one-time-code"
-        inputmode="numeric"
-        pattern="[0-9]{6}"
-        maxlength="6"
-        required
-      >
-
-      <button id="verify-button" type="submit">
-        Verify Email
-      </button>
-    </form>
-
-    <p
-      id="verification-message"
-      class="signup-message"
-      aria-live="polite"
-    ></p>
-  </div>
-
 </section>
 
 <footer>
@@ -1013,21 +947,6 @@ Past Issues
 
   const signupMessage =
     document.getElementById("signup-message");
-
-  const verificationPanel =
-    document.getElementById("verification-panel");
-
-  const verificationForm =
-    document.getElementById("verification-form");
-
-  const verificationEmail =
-    document.getElementById("verification-email");
-
-  const verifyButton =
-    document.getElementById("verify-button");
-
-  const verificationMessage =
-    document.getElementById("verification-message");
 
   signupForm.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -1071,10 +990,7 @@ Past Issues
     }
 
     signupMessage.textContent =
-      "Account created. Check your email for the six-digit verification code.";
-
-    verificationEmail.value = email;
-    verificationPanel.hidden = false;
+      "Account created. Check your email and click the verification button.";
 
     signupForm.reset();
     signupButton.disabled = false;
@@ -1082,37 +998,36 @@ Past Issues
       "Create Account & Subscribe";
   });
 
-  verificationForm.addEventListener("submit", async (event) => {
-    event.preventDefault();
+  async function confirmEmailFromLink() {
+    const params = new URLSearchParams(window.location.search);
+    const tokenHash = params.get("token_hash");
 
-    const email = verificationEmail.value.trim();
-    const token =
-      document.getElementById("verification-code").value.trim();
+    if (!tokenHash) return;
 
-    verifyButton.disabled = true;
-    verifyButton.textContent = "Verifying...";
-    verificationMessage.textContent = "";
+    document.getElementById("subscribe").scrollIntoView();
+    signupMessage.textContent = "Confirming your email...";
 
     const { error } = await supabase.auth.verifyOtp({
-      email,
-      token,
-      type: "signup"
+      token_hash: tokenHash,
+      type: "email"
     });
 
     if (error) {
-      verificationMessage.textContent =
-        `Unable to verify: ${error.message}`;
-      verifyButton.disabled = false;
-      verifyButton.textContent = "Verify Email";
-      return;
+      signupMessage.textContent =
+        `Unable to confirm email: ${error.message}`;
+    } else {
+      signupMessage.textContent =
+        "Email confirmed successfully. Welcome to Vita Nova!";
     }
 
-    verificationMessage.textContent =
-      "Email verified successfully. Welcome to Vita Nova!";
-    verificationForm.reset();
-    verifyButton.disabled = false;
-    verifyButton.textContent = "Verified";
-  });
+    window.history.replaceState(
+      {},
+      document.title,
+      window.location.pathname
+    );
+  }
+
+  confirmEmailFromLink();
 </script>
 
 </body>
